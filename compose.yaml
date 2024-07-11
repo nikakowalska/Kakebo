@@ -1,1 +1,13 @@
+version: '3.1'
+
 services:
+
+  mongo:
+    image: mongo:7.0.12
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ala
+      MONGO_INITDB_ROOT_PASSWORD: alamakota
+    ports:
+      - "27017:27017"
+
+
