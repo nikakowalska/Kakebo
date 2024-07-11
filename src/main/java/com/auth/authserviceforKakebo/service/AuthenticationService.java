@@ -5,13 +5,15 @@ import com.auth.authserviceforKakebo.dto.AuthDto;
 import com.auth.authserviceforKakebo.dto.EmailDto;
 import com.auth.authserviceforKakebo.dto.UserDto;
 import com.auth.authserviceforKakebo.exception.ValidationException;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
-
+@Service
 public class AuthenticationService {
+
     private static final long TOKEN_TIME_AVAIBILITY = 600;
     private Map<EmailDto, String> userData = new HashMap<>() {
     };
@@ -58,6 +60,7 @@ public class AuthenticationService {
     }
 
     public boolean createUser(EmailDto emailDto, String password) {
+        //mogorepository zapisuje uzytkownika do bazy danych, do bazy userenity
         userData.put(emailDto, password);
         return true;
     }
