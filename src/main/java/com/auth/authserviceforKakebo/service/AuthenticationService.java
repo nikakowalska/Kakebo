@@ -60,7 +60,7 @@ public class AuthenticationService {
     }
 
     public boolean createUser(EmailDto emailDto, String password) {
-        //mogorepository zapisuje uzytkownika do bazy danych, do bazy userenity
+
         userData.put(emailDto, password);
         return true;
     }

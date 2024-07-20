@@ -2,7 +2,7 @@ package com.auth.authserviceforKakebo.mapperrs;
 
 
 import com.auth.authserviceforKakebo.dto.UserDto;
-import com.auth.authserviceforKakebo.entities.UserEntity;
+import com.auth.authserviceforKakebo.repository.entities.UserEntity;
 
 public class UserMapper {
     public UserEntity fromDtoToEntity(UserDto userDto) {
