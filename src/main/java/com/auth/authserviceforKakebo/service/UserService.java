@@ -5,6 +5,7 @@ import com.auth.authserviceforKakebo.repository.entities.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Service
@@ -21,9 +22,16 @@ public class UserService {
         entity.setUsername(username);
         entity.setEmail(email);
         entity.setPassword(passwordhash);
+        entity.setCreatingTime(Instant.now());
+        entity.setVerified(false);
 
     UserEntity savedEntity = userCredentialsRepository.save(entity);
-        System.out.println("User: " + username);
+
         return savedEntity.getId();
     }
+    //stworz klase konfiguracyjna @Component, wczytuje sie swoje ustawienia z plkików konfiguracyjnych
+    //kazde srodowisko ma swoje pliki konfiguracyjne
+    //maja info jaki adres z jaka bazą danych
+    //warto wyciagnac czas waznosci tokena z klasy
+
 }

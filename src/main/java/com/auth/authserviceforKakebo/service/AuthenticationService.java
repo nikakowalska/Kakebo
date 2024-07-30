@@ -15,6 +15,7 @@ import java.util.Map;
 public class AuthenticationService {
 
     private static final long TOKEN_TIME_AVAIBILITY = 600;
+    //miliseconds to seconds
     private Map<EmailDto, String> userData = new HashMap<>() {
     };
 
@@ -64,4 +65,5 @@ public class AuthenticationService {
         userData.put(emailDto, password);
         return true;
     }
+
 }
