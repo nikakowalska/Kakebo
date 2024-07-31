@@ -1,5 +1,6 @@
 package com.auth.authserviceforKakebo.service;
 
+import com.auth.authserviceforKakebo.dto.CredentialsDto;
 import com.auth.authserviceforKakebo.repository.UserCredentialsRepository;
 import com.auth.authserviceforKakebo.repository.entities.UserEntity;
 import lombok.AllArgsConstructor;
@@ -13,15 +14,18 @@ import java.util.UUID;
 public class UserService {
 
     private final UserCredentialsRepository userCredentialsRepository;
+    public UUID login(CredentialsDto credentialsDto) {
+        UserEntity userEntity = userCredentialsRepository.findByEmailAndPassword(credentialsDto.getEmail(), credentialsDto.getPassword());
+        return userEntity.getId();
+    }
+    public UUID addUser(String password, String username, String email){
 
-    public UUID addUser(String passwordhash, String username, String email){
-        //sae to database
 
         UserEntity entity = new UserEntity();
         entity.setId(UUID.randomUUID());
         entity.setUsername(username);
         entity.setEmail(email);
-        entity.setPassword(passwordhash);
+        entity.setPassword(password);
         entity.setCreatingTime(Instant.now());
         entity.setVerified(false);
 
@@ -29,9 +33,7 @@ public class UserService {
 
         return savedEntity.getId();
     }
-    //stworz klase konfiguracyjna @Component, wczytuje sie swoje ustawienia z plkików konfiguracyjnych
-    //kazde srodowisko ma swoje pliki konfiguracyjne
-    //maja info jaki adres z jaka bazą danych
-    //warto wyciagnac czas waznosci tokena z klasy
+
+
 
 }

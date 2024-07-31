@@ -21,9 +21,7 @@ public class AuthenticationController {
     public EmailDto getEmailFromToken(@PathVariable String token) {
         return authenticationService.getEmailFromToken(token);
     }
-@RequestBody
 
-//userdto w jsonie
 
     @PostMapping("{email}/{password}")
     public boolean postUser(
